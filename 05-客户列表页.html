@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户列表</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .header { padding: 10px; background-color: #f8f9fa; text-align: center; }
+        .search-container { padding: 10px; }
+        .customer-list { list-style: none; padding: 0; }
+        .customer-item { padding: 10px; border: 1px solid #ddd; margin: 5px 0; }
+        .customer-details { display: none; /* modal style */ }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>客户列表</h1>
+    </div>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="搜索客户..." />
+    </div>
+    <ul class="customer-list" id="customerList">
+        <!-- Customer items will be dynamically added here -->
+    </ul>
+    <div class="customer-details" id="customerDetails">
+        <!-- Customer details will be displayed here -->
+    </div>
+    <script>
+        // JavaScript for search and filtering functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const items = document.querySelectorAll('.customer-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
